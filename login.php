@@ -2,6 +2,9 @@
 include_once 'header.php';
 require_once 'includes/functions.inc.php';
 
+if (isBroker()) {
+    header("location: dashboard.php");
+}
 if (isNone()) {
     header("location: login.php");
 }

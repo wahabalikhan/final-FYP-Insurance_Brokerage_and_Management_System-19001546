@@ -28,7 +28,7 @@ if (isset($_POST['login-submit'])) {
                 session_start();
                 $_SESSION['session_id'] = $row['broker_id'];
                 $_SESSION['session_email'] = $row['broker_email'];
-                $_SESSION['session_user_level'] = user_level_broker;
+                $_SESSION['session_user_level'] = $row['user_level'];
 
                 header("Location: ../dashboard.php?login=success");
                 exit();

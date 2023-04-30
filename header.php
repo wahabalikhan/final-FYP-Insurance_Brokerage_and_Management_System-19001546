@@ -3,6 +3,7 @@
 # user logged in on every page on application
 session_start();
 include 'includes/dbh.inc.php';
+include 'includes/functions.inc.php';
 
 $sql = "SELECT * FROM brokers";
 $records = mysqli_query($conn, $sql);
@@ -25,11 +26,12 @@ $records = mysqli_query($conn, $sql);
     <ul>
         <?php
         # check if broker logged in
-        if (isset($_SESSION["session_email"])) {
-            echo "<li><a href='dashboard.php'>Home</a></li>";
+        if (isset($_SESSION['session_id'])) {
+            if ($_SESSION['session_user_level'] == user_level_broker) {
+                echo "<li><a href='dashboard.php'>Home</a></li>";
             echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
+            }
         } else {
-            # non-registered user
             echo "<li><a href='index.php'>Home</a></li>";
             echo "<li><a href='login.php'>Login</a></li>";
         }
