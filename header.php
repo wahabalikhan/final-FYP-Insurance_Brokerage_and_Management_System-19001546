@@ -4,9 +4,6 @@
 session_start();
 include 'includes/dbh.inc.php';
 include 'includes/functions.inc.php';
-
-$sql = "SELECT * FROM brokers";
-$records = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -27,13 +24,22 @@ $records = mysqli_query($conn, $sql);
         <?php
         # check if broker logged in
         if (isset($_SESSION['session_id'])) {
-            if ($_SESSION['session_user_level'] == user_level_broker) {
-                echo "<li><a href='dashboard.php'>Home</a></li>";
-            echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
+            if ($_SESSION['session_user_level'] == user_level_admin) {
+                echo "<li><a href='admin_dashboard.php'>Admin dashboard</a></li>";
+                echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
+            }
+            else if ($_SESSION['session_user_level'] == user_level_broker) {
+                echo "<li><a href='broker_dashboard.php'>Broker dashboard</a></li>";
+                echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
+            }
+            else if ($_SESSION['session_user_level'] == user_level_consumer) {
+                echo "<li><a href='consumer_dashboard.php'>Consumer dashboard</a></li>";
+                echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
             }
         } else {
             echo "<li><a href='index.php'>Home</a></li>";
             echo "<li><a href='login.php'>Login</a></li>";
+            echo "<li><a href='register.php'>Register</a></li>";
         }
         ?>
     </ul>

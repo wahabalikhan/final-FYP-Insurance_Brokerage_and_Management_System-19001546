@@ -4,22 +4,22 @@ session_start();
 include_once 'header.php';
 require_once 'includes/functions.inc.php';
 
-if (!isBroker()) {
+if (!isConsumer()) {
     header("location: login.php");
 }
 
-$sql = "SELECT * FROM brokers WHERE broker_id='".$_SESSION['session_id']."'";
+$sql = "SELECT * FROM consumers WHERE consumer_id='".$_SESSION['session_id']."'";
 $records = mysqli_query($conn, $sql);
 ?>
 
 <body>
+    <h1>consumer dashboard</h1>
     <?php while ($row = mysqli_fetch_array($records)) {
-            echo $row['broker_id'];
-            echo $row['broker_fullname'];
-            echo $row['broker_email'];
-            echo $row['broker_password'];
-            echo $row['broker_phone'];
-            echo $row['broker_address'];
-            echo "<br>";
+            echo $row['consumer_id'];
+            echo $row['consumer_fullname'];
+            echo $row['consumer_email'];
+            echo $row['consumer_password'];
+            echo $row['consumer_phone'];
+            echo $row['consumer_address'];
     } ?>
 </body>
