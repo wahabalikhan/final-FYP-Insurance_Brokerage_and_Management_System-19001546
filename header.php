@@ -30,10 +30,12 @@ include 'includes/functions.inc.php';
             }
             else if ($_SESSION['session_user_level'] == user_level_broker) {
                 echo "<li><a href='broker_dashboard.php'>Broker dashboard</a></li>";
+                echo "<li><a href='broker_booking.php'>Bookings</a></li>";
                 echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
             }
             else if ($_SESSION['session_user_level'] == user_level_consumer) {
                 echo "<li><a href='consumer_dashboard.php'>Consumer dashboard</a></li>";
+                echo "<li><a href='consumer_booking.php'>Bookings</a></li>";
                 echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
             }
         } else {

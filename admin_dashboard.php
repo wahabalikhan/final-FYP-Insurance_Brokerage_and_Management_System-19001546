@@ -38,7 +38,7 @@ $records = mysqli_query($conn, $sql);
             <td><input type=text name=consumer_password value='" . $row["consumer_password"] . "'></td>
             <td><input type=hidden name=user_level value='" . $row["user_level"] . "'></td>
             <input type=hidden name=consumer_id value='" . $row["consumer_id"] . "'>
-            <td><input type='submit' name='add-consumer' value='Add'></td>
+            <td><input type='submit' name='insert-consumer' value='Add'></td>
             </form><tr>";
         ?>
     </table>
