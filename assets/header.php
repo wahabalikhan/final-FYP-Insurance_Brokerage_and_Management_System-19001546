@@ -22,7 +22,7 @@ include 'includes/functions.inc.php';
 <header>
     <ul>
         <?php
-        # check if broker logged in
+        # check if logged in
         if (isset($_SESSION['session_id'])) {
             if ($_SESSION['session_user_level'] == user_level_admin) {
                 echo "<li><a href='admin_dashboard.php'>Admin dashboard</a></li>";

@@ -8,7 +8,7 @@ if (!isConsumer()) {
     header("location: login.php");
 }
 
-$sql = "SELECT * FROM consumers WHERE consumer_id='".$_SESSION['session_id']."'";
+$sql = "SELECT * FROM consumer WHERE consumer_id='".$_SESSION['session_id']."'";
 $records = mysqli_query($conn, $sql);
 ?>
 
@@ -16,10 +16,7 @@ $records = mysqli_query($conn, $sql);
     <h1>consumer dashboard</h1>
     <?php while ($row = mysqli_fetch_array($records)) {
             echo $row['consumer_id'];
-            echo $row['consumer_fullname'];
             echo $row['consumer_email'];
             echo $row['consumer_password'];
-            echo $row['consumer_phone'];
-            echo $row['consumer_address'];
     } ?>
 </body>

@@ -9,7 +9,7 @@ if (isset($_POST['consumer_login_submit'])) {
 
     require_once 'dbh.inc.php';
 
-    $sql = "SELECT * FROM consumers WHERE consumer_email=?;";
+    $sql = "SELECT * FROM consumer WHERE consumer_email=?;";
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -49,7 +49,7 @@ if (isset($_POST['consumer_login_submit'])) {
 
     require_once 'dbh.inc.php';
 
-    $sql = "SELECT * FROM brokers WHERE broker_email=?;";
+    $sql = "SELECT * FROM broker WHERE broker_email=?;";
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -83,7 +83,7 @@ if (isset($_POST['consumer_login_submit'])) {
             exit();
         }
     }
-} if (isset($_POST['admin_login_submit'])) {
+} else if (isset($_POST['admin_login_submit'])) {
     $admin_email = $_REQUEST['admin_email'];
     $admin_password = $_REQUEST['admin_password'];
 

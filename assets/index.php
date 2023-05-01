@@ -6,6 +6,4 @@ if (empty($_GET['status'])) {
     exit;
 }
 ?>
-
-<p>hello</p>
 <h1>Home page</h1>
