@@ -5,7 +5,7 @@
         $consumer_email = $_POST['consumer_email'];
         $consumer_password = $_POST['consumer_password'];
 
-        $sql = "INSERT INTO consumers (consumer_email, consumer_password) VALUES ('$consumer_email','$consumer_password')";
+        $sql = "INSERT INTO consumer (consumer_email, consumer_password) VALUES ('$consumer_email','$consumer_password')";
         if (mysqli_query($conn, $sql)) {
             header("refresh:1; url='../admin_dashboard.php'");
         } else {
