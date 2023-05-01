@@ -36,10 +36,12 @@ include 'includes/functions.inc.php';
             else if ($_SESSION['session_user_level'] == user_level_consumer) {
                 echo "<li><a href='consumer_dashboard.php'>Consumer dashboard</a></li>";
                 echo "<li><a href='consumer_booking.php'>Bookings</a></li>";
+                echo "<li><a href='products.php'>Products</a></li>";
                 echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
             }
         } else {
             echo "<li><a href='index.php'>Home</a></li>";
+            echo "<li><a href='products.php'>Products</a></li>";
             echo "<li><a href='login.php'>Login</a></li>";
             echo "<li><a href='register.php'>Register</a></li>";
         }

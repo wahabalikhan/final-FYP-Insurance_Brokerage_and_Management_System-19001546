@@ -8,3 +8,11 @@
         echo "Failed to delete booking record";
     }
     header("refresh:1; url='../consumer_booking.php'");
+
+    $sql_product = "DELETE FROM product WHERE product_id='$_GET[product_id]'";
+    if (mysqli_query($conn, $sql_product)) {
+        echo "Successfully deleted product record";
+    } else {
+        echo "Failed to delete product record";
+    }
+    header("refresh:1; url='../admin_dashboard.php'");
