@@ -1,49 +1,50 @@
 <?php
-require 'dbh.inc.php';
+# Code adapted from https://www.youtube.com/watch?v=gCo6JqGMi30, How To Create A Login System In PHP For Beginners | Procedural MySQLi | PHP Tutorial
 
-if (isset($_POST['register-submit'])) {
-    $consumer_email = $_POST['consumer_email'];
-    $consumer_password = $_POST['consumer_password'];
+# If user submitted data through form, then run php script as it is—else if they didn't, send back to sign up page. PHP fucntion isset=if set specific piece of data is in URL, then user is able to access page
 
-    $sql = "SELECT consumer_email FROM consumer WHERE consumer_email=?";
-    $stmt = mysqli_stmt_init($conn);
+if (isset($_POST["register-submit"])) {
 
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("Location: ../register.php?error=sqlerror");
+    #Get data from URL
+    $consumer_email = $_POST["consumer_email"];
+    $consumer_password = $_POST["consumer_password"];
+    $consumer_password_repeat = $_POST["consumer_password_repeat"];
+
+    # error handling—catch any errors user makes when passing data
+    require_once 'dbh.inc.php';
+    require_once 'functions.inc.php';
+
+    # catch errors—empty inputs
+    if (emptyConsumerRegister($consumer_email, $consumer_password, $consumer_password_repeat) !== false) {
+        header("location: ../register.php?error=emptyinput");
+        # stop script from running
         exit();
-    } else {
-        mysqli_stmt_bind_param($stmt, "s", $consumer_email);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_store_result($stmt);
-        $resultCheck = mysqli_stmt_num_rows($stmt);
-
-        if ($resultCheck > 0) {
-            header("Location: ../register.php?error=emailtaken=" . $email);
-            exit();
-        } else {
-            $sql = "INSERT INTO consumer (consumer_email, consumer_password) VALUES (?, ?)";
-            $stmt = mysqli_stmt_init($conn);
-
-            if (!mysqli_stmt_prepare($stmt, $sql)) {
-                header("Location: ../register.php?error=sqlerror");
-                exit();
-            } else {
-                $consumer_hashed_password = password_hash($consumer_password, PASSWORD_DEFAULT);
-                mysqli_stmt_bind_param($stmt, "ss", $consumer_email, $consumer_hashed_password);
-                mysqli_stmt_execute($stmt);
-
-                session_start();
-                $_SESSION['session_id'] = $row['consumer_id'];
-                $_SESSION['session_email'] = $row['consumer_email'];
-                $_SESSION['session_user_level'] = $row['user_level'];
-                header("Location: ../login.php");
-                exit();
-            }
-        }
     }
-    mysqli_stmt_close($stmt);
-    mysqli_close($conn);
+
+    # catch errors—invalid email address
+    if (invalidConsumerEmailAddress($consumer_email) !== false) {
+        header("location: ../register.php?error=invalidemailaddress");
+        # stop script from running
+        exit();
+    }
+
+    # catch errors—passwords not the same
+    if (passwordConsumerMatch($consumer_password, $consumer_password_repeat) !== false) {
+        header("location: ../register.php?error=passwordsdontmatch");
+        # stop script from running
+        exit();
+    }
+
+    # catch errors—email address already exists. Using $conn to check database if data exists
+    if (emailAddressConsumerExists($conn, $consumer_email) !== false) {
+        header("location: ../register.php?error=emailaddressalreadyexists");
+        # stop script from running
+        exit();
+    }
+
+    # if no errors made, then create record into database
+    createConsumerUser($conn, $consumer_email, $consumer_password);
 } else {
-    header("Location: ../register.php");
+    header("location: ../register.php");
     exit();
 }

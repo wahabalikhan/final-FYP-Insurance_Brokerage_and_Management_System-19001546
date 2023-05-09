@@ -1,5 +1,19 @@
 <?php
 include_once 'header.php';
+if (empty($_GET['status'])) {
+    session_destroy();
+    header('Location:index.php?status=1');
+    exit;
+}
+if (isConsumer()) {
+    header("location: consumer_dashboard.php");
+}
+if (isBroker()) {
+    header("location: broker_dashboard.php");
+}
+if (isAdmin()) {
+    header("location: admin_dashboard.php");
+}
 ?>
 
 <body>

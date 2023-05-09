@@ -96,7 +96,7 @@ include 'includes/functions.inc.php';
                 <ul class="nav flex-column">
                     <?php
                     if (isset($_SESSION['session_id'])) {
-                        if ($_SESSION['session_user_level'] == user_level_admin) {
+                        if ($_SESSION['session_user_level'] === user_level_admin) {
                             echo "<li class='nav-item'>
                             <a class='nav-link' href='admin_dashboard.php'>
                                 <span class='align-text-bottom'></span>
@@ -109,7 +109,7 @@ include 'includes/functions.inc.php';
                                 Log out
                             </a>
                         </li>";
-                        } else if ($_SESSION['session_user_level'] == user_level_broker) {
+                        } else if ($_SESSION['session_user_level'] === user_level_broker) {
                             echo "<li class='nav-item'>
                             <a class='nav-link' href='broker_dashboard.php'>
                                 <span class='align-text-bottom'></span>
@@ -128,7 +128,7 @@ include 'includes/functions.inc.php';
                                 Log out
                             </a>
                         </li>";
-                        } else if ($_SESSION['session_user_level'] == user_level_consumer) {
+                        } else if ($_SESSION['session_user_level'] === user_level_consumer) {
                             echo "<li class='nav-item'>
                             <a class='nav-link' href='consumer_dashboard.php'>
                                 <span class='align-text-bottom'></span>

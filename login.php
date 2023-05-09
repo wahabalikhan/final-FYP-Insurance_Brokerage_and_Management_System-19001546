@@ -34,6 +34,18 @@ if (isAdmin()) {
 
             <button class="w-100 btn btn-lg btn-primary" type="submit" name="consumer_login_submit">Sign in</button>
         </form>
+        <?php
+        # error-handling messages
+        # GET to check for data we can see
+        if (isset($_GET["error"])) {
+            if ($_GET["error"] == "emptyinput") {
+                echo "<p>Log in failed, missing fields.</p>";
+            }
+            if ($_GET["error"] == "wronglogin") {
+                echo "<p>Log in failed, incorrect login credentials.</p>";
+            }
+        }
+        ?>
         <br>
         <form action="includes/login.inc.php" method="post" style="max-width: 500px;"> <!-- action="includes/login.inc.php" is where user will be sent to when form submitted, using post method to hide sensitive data in URL but will still be passed-->
             <h1 class="h3 mb-3 fw-normal">Broker login</h1>
@@ -49,6 +61,7 @@ if (isAdmin()) {
 
             <button class="w-100 btn btn-lg btn-primary" type="submit" name="broker_login_submit">Sign in</button>
         </form>
+
         <br>
         <form action="includes/login.inc.php" method="post" style="max-width: 500px;"> <!-- action="includes/login.inc.php" is where user will be sent to when form submitted, using post method to hide sensitive data in URL but will still be passed-->
             <h1 class="h3 mb-3 fw-normal">Admin login</h1>

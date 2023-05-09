@@ -67,7 +67,6 @@ $records_booking = mysqli_query($conn, $sql_booking);
                                 <td>" . $row['booking_date'] . "</td>
                                 <td>" . $row["booking_time"] . "</td>
                                 <td>" . $row["broker_id"] . "</td>
-                                <td><a class='delete' href=includes/delete.inc.php?booking_id=" . $row['booking_id'] . ">Delete</a></td>
                                 </tr>";
                     } ?>
                 </tbody>

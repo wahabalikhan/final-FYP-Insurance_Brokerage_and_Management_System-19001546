@@ -32,13 +32,10 @@ $records_booking = mysqli_query($conn, $sql_booking);
                 </thead>
                 <tbody>
                     <?php while ($row = mysqli_fetch_array($records)) {
-                        echo "<tr><form action='includes/update.inc.php' method='post'>
-                                <td><input type=text name=consumer_email value='" . $row["consumer_email"] . "'</td>
-                                <td><input type=text name=consumer_password value='" . $row["consumer_password"] . "'</td>
-                                <td><input type=hidden name=user_level value='" . $row["user_level"] . "'</td>
-                                <td><input type=hidden name=consumer_id value='" . $row["consumer_id"] . "'</td>
-                                <td><input type='submit' name='update-consumer' value='Update'</td>
-                                </form></tr>";
+                        echo "<tr>
+                                <td>" . $row["consumer_email"] . "</td>
+                                <td>" . $row["consumer_password"] . "</td>
+                                </tr>";
                     } ?>
                 </tbody>
             </table>
@@ -64,7 +61,6 @@ $records_booking = mysqli_query($conn, $sql_booking);
                                 <td>" . $row['booking_date'] . "</td>
                                 <td>" . $row["booking_time"] . "</td>
                                 <td>" . $row["broker_id"] . "</td>
-                                <td><a class='delete' href=includes/delete.inc.php?booking_id=" . $row['booking_id'] . ">Delete</a></td>
                                 </tr>";
                     } ?>
                 </tbody>

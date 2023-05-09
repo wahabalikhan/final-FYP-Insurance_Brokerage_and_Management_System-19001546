@@ -65,9 +65,13 @@ if (isset($_POST['purchase_submit'])) {
 
     $sql = "INSERT INTO policies (product_id, consumer_id) VALUES ('$product_id','$consumer_id')";
     if (mysqli_query($conn, $sql)) {
-        echo "Successfully inserted policy record";
     } else {
-        echo "Failed to insert policy record";
+        echo "";
     }
+    header("refresh:1; url='../checkout.php'");
+}
+
+if (isset($_POST['checkout_submit'])) {
+    
     header("refresh:1; url='../consumer_dashboard.php'");
 }

@@ -47,11 +47,8 @@ $records_booking = mysqli_query($conn, $sql_booking);
                 <tbody>
                     <?php while ($row = mysqli_fetch_array($records)) {
                         echo "<tr><form action='includes/update.inc.php' method='post'>
-                                <td><input type=text name=broker_email value='" . $row["broker_email"] . "'></td>
-                                <td><input type=text name=broker_password value='" . $row["broker_password"] . "'></td>
-                                <td><input type=hidden name=user_level value='" . $row["user_level"] . "'></td>
-                                <td><input type=hidden name=broker_id value='" . $row["broker_id"] . "'></td>
-                                <td><input type='submit' name='update-broker' value='Update'></td>
+                                <td>" . $row["broker_email"] . "></td>
+                                <td>" . $row["broker_password"] . "></td>
                                 </form></tr>";
                     } ?>
                 </tbody>
@@ -78,7 +75,6 @@ $records_booking = mysqli_query($conn, $sql_booking);
                                 <td>" . $row['booking_date'] . "</td>
                                 <td>" . $row["booking_time"] . "</td>
                                 <td>" . $row["broker_id"] . "</td>
-                                <td><a class='delete' href=includes/delete.inc.php?booking_id=" . $row['booking_id'] . ">Delete</a></td>
                                 </tr>";
                     } ?>
                 </tbody>
