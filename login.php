@@ -17,34 +17,55 @@ if (isAdmin()) {
 
 ?>
 
-<h1>Log in</h1>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <h1>Log in</h1>
+    <div class="form-signin w-100 m-auto">
+        <form action="includes/login.inc.php" method="post" style="max-width: 500px;"> <!-- action="includes/login.inc.php" is where user will be sent to when form submitted, using post method to hide sensitive data in URL but will still be passed-->
+            <h1 class="h3 mb-3 fw-normal">Consumer login</h1>
 
-<p>consumer login</p>
-<div class="consumer-login-form">
-    <form action="includes/login.inc.php" method="post"> <!-- action="includes/login.inc.php" is where user will be sent to when form submitted, using post method to hide sensitive data in URL but will still be passed-->
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="consumer_email">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="consumer_password">
+                <label for="floatingPassword">Password</label>
+            </div>
 
-        <input type="text" name="consumer_email" placeholder="Email address">
-        <input type="password" name="consumer_password" placeholder="Password">
-        <button type="submit" name="consumer_login_submit">Log in</button>
-    </form>
-</div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" name="consumer_login_submit">Sign in</button>
+        </form>
+        <br>
+        <form action="includes/login.inc.php" method="post" style="max-width: 500px;"> <!-- action="includes/login.inc.php" is where user will be sent to when form submitted, using post method to hide sensitive data in URL but will still be passed-->
+            <h1 class="h3 mb-3 fw-normal">Broker login</h1>
 
-<p>broker login</p>
-<div class="broker-login-form">
-    <form action="includes/login.inc.php" method="post"> <!-- action="includes/login.inc.php" is where user will be sent to when form submitted, using post method to hide sensitive data in URL but will still be passed-->
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="broker_email">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="broker_password">
+                <label for="floatingPassword">Password</label>
+            </div>
 
-        <input type="text" name="broker_email" placeholder="Email address">
-        <input type="password" name="broker_password" placeholder="Password">
-        <button type="submit" name="broker_login_submit">Log in</button>
-    </form>
-</div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" name="broker_login_submit">Sign in</button>
+        </form>
+        <br>
+        <form action="includes/login.inc.php" method="post" style="max-width: 500px;"> <!-- action="includes/login.inc.php" is where user will be sent to when form submitted, using post method to hide sensitive data in URL but will still be passed-->
+            <h1 class="h3 mb-3 fw-normal">Admin login</h1>
 
-<p>admin login</p>
-    <div class="admin-login-form">
-        <form action="includes/login.inc.php" method="post"> <!-- action="includes/login.inc.php" is where user will be sent to when form submitted, using post method to hide sensitive data in URL but will still be passed-->
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="admin_email">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="admin_password">
+                <label for="floatingPassword">Password</label>
+            </div>
 
-            <input type="text" name="admin_email" placeholder="Email address">
-            <input type="password" name="admin_password" placeholder="Password">
-            <button type="submit" name="admin_login_submit">Log in</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" name="admin_login_submit">Sign in</button>
         </form>
     </div>
+</main>
+
+
+<script src="assets/js/bootstrap.bundle.min.js"></script>

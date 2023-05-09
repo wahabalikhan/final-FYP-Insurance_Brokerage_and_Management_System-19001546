@@ -35,7 +35,7 @@ if (isset($_POST['register-submit'])) {
                 $_SESSION['session_id'] = $row['consumer_id'];
                 $_SESSION['session_email'] = $row['consumer_email'];
                 $_SESSION['session_user_level'] = $row['user_level'];
-                header("Location: ../consumer_dashboard.php?register=success");
+                header("Location: ../login.php");
                 exit();
             }
         }

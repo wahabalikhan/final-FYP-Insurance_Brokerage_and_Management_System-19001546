@@ -14,6 +14,19 @@ if (isset($_POST['insert-consumer'])) {
     }
     header("refresh:1; url='../admin_dashboard.php'");
 }
+
+if (isset($_POST['insert-broker'])) {
+    $broker_email = $_POST['broker_email'];
+    $broker_password = $_POST['broker_password'];
+
+    $sql = "INSERT INTO broker (broker_email, broker_password) VALUES ('$broker_email','$broker_password')";
+    if (mysqli_query($conn, $sql)) {
+        echo "Successfully inserted broker record";
+    } else {
+        echo "Failed to insert broker record";
+    }
+    header("refresh:1; url='../admin_dashboard.php'");
+}
 // insert booking into bookings table from consumer account
 if (isset($_POST['booking_submit'])) {
     //$consumer_id = $_POST['consumer_id'];
@@ -43,4 +56,18 @@ if (isset($_POST['add-product'])) {
         echo "Failed to insert product record";
     }
     header("refresh:1; url='../admin_dashboard.php'");
+}
+
+if (isset($_POST['purchase_submit'])) {
+    
+    $product_id = $_POST['select_product'];
+    $consumer_id = $_POST['select_consumer'];
+
+    $sql = "INSERT INTO policies (product_id, consumer_id) VALUES ('$product_id','$consumer_id')";
+    if (mysqli_query($conn, $sql)) {
+        echo "Successfully inserted policy record";
+    } else {
+        echo "Failed to insert policy record";
+    }
+    header("refresh:1; url='../consumer_dashboard.php'");
 }

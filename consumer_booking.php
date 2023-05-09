@@ -20,38 +20,61 @@ $records_booking = mysqli_query($conn, $sql_booking);
 ?>
 
 <body>
-    <h1>bookings dashboard</h1>
-    <?php while ($row = mysqli_fetch_array($records_consumer)) {
-        echo $row['consumer_id'];
-        echo $row['consumer_email'];
-        echo $row['consumer_password'];
-    } ?>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1>Bookings dashboard</h1>
+        </div>
+        <h4>Book</h4>
+        <form action="includes/insert.inc.php" method="post"> <!-- action="includes/login.inc.php" is where user will be sent to when form submitted, using post method to hide sensitive data in URL but will still be passed -->
+            <input type="date" name="select_date">
+            <select name="select_time">
+                <?php for ($hours = 0; $hours < 24; $hours++) {
+                    for ($mins = 0; $mins < 60; $mins += 30) {
+                        $time = str_pad($hours, 2, '0', STR_PAD_LEFT) . ':' . str_pad($mins, 2, '0', STR_PAD_LEFT) . ':00';
+                        echo '<option value= "' . $time . '">' . $time . '</option>';
+                    }
+                } ?>
+            </select>
 
-    <h2>Book</h2>
-    <form action="includes/insert.inc.php" method="post"> <!-- action="includes/login.inc.php" is where user will be sent to when form submitted, using post method to hide sensitive data in URL but will still be passed -->
-        <input type="date" name="select_date">
-        <select name="select_time">
-            <?php for ($hours = 0; $hours < 24; $hours++) {
-                for ($mins = 0; $mins < 60; $mins += 30) {
-                    $time = str_pad($hours, 2, '0', STR_PAD_LEFT) . ':' . str_pad($mins, 2, '0', STR_PAD_LEFT) . ':00';
-                    echo '<option value= "' . $time . '">' . $time . '</option>'; }}?>
-        </select>
+            <select name="select_broker">
+                <option>Select a broker</option>
+                <?php while ($row = mysqli_fetch_array($records_broker)) {
+                    echo "<option>$row[broker_id]</option>";
+                    //echo "<option>$row[broker_id] - $row[broker_email]</option>";
+                } ?>
+            </select>
+            <button type="submit" name="booking_submit">Book</button>
+            </form>
+            <br>
+        <h4>Upcoming bookings</h4>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">Booking ID</th>
+                        <th scope="col">Booking date</th>
+                        <th scope="col">Booking time</th>
+                        <th scope="col">Broker ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql_booking = "SELECT * FROM booking";
+                    $records_booking = mysqli_query($conn, $sql_booking);
+                    while ($row = mysqli_fetch_array($records_booking)) {
+                        echo "<tr>
+                                <td>" . $row["booking_id"] . "</td>
+                                <td>" . $row['booking_date'] . "</td>
+                                <td>" . $row["booking_time"] . "</td>
+                                <td>" . $row["broker_id"] . "</td>
+                                <td><a class='delete' href=includes/delete.inc.php?booking_id=" . $row['booking_id'] . ">Delete</a></td>
+                                </tr>";
+                    } ?>
+                </tbody>
+            </table>
+        </div>
+    </main>
 
-        <select name="select_broker">
-            <option>Select a broker</option>
-            <?php while ($row = mysqli_fetch_array($records_broker)) {
-                echo "<option>$row[broker_id]</option>";
-                //echo "<option>$row[broker_id] - $row[broker_email]</option>";
-            } ?>
-        </select>
-        <button type="submit" name="booking_submit">Book</button>
-    </form>
-    
 
-    <h2>Upcoming bookings</h2>
-    <?php while ($row = mysqli_fetch_array($records_booking)) {
-        echo $row['booking_id']." ".$row['booking_date']." ".$row['booking_time']." ".$row['broker_id'];
-        echo "<a class='delete' href=includes/delete.inc.php?booking_id=" . $row['booking_id'] . ">Delete</a>";
-        echo "<br>";
-    } ?>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
