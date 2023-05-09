@@ -22,17 +22,17 @@ $records_booking = mysqli_query($conn, $sql_booking);
 <body>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1>Bookings dashboard</h1>
+            <h1>Appointment</h1>
         </div>
-        <h4>Upcoming bookings</h4>
+        <h4>Upcoming appointments</h4>
         <div class="table-responsive">
             <table class="table table-striped table-sm">
                 <thead>
                     <tr>
-                        <th scope="col">Booking ID</th>
-                        <th scope="col">Booking date</th>
-                        <th scope="col">Booking time</th>
-                        <th scope="col">Broker ID</th>
+                        <th scope="col">Appointment ID</th>
+                        <th scope="col">Appointment date</th>
+                        <th scope="col">Appointment time</th>
+                        <th scope="col">Broker</th>
                     </tr>
                 </thead>
                 <tbody>

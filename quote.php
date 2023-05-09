@@ -21,7 +21,7 @@ $records_quote = mysqli_query($conn, $sql_quote);
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1>Quotes</h1>
         </div>
-        <h4>Fill out a form for a quote</h4>
+        <h4>Quote form</h4>
 
 
         <form action="search_results.php" method="post"> <!-- action="includes/login.inc.php" is where user will be sent to when form submitted, using post method to hide sensitive data in URL but will still be passed -->

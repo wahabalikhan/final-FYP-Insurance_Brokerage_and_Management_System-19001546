@@ -119,7 +119,7 @@ include 'includes/functions.inc.php';
                         <li class='nav-item'>
                             <a class='nav-link' href='broker_booking.php'>
                                 <span class='align-text-bottom'></span>
-                                Bookings
+                                Appointments
                             </a>
                         </li>
                         <li class='nav-item'>
@@ -138,7 +138,7 @@ include 'includes/functions.inc.php';
                         <li class='nav-item'>
                             <a class='nav-link' href='consumer_booking.php'>
                                 <span class='align-text-bottom'></span>
-                                Bookings
+                                Appointments
                             </a>
                         </li>
                         <li class='nav-item'>

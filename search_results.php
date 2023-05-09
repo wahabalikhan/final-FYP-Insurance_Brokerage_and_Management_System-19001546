@@ -47,6 +47,7 @@ $records_consumer = mysqli_query($conn, $sql_consumer);
             header("refresh:1; url='search_results.php'");
         } ?>
 
+<h4>Purchase product</h4>
         <form action="includes/insert.inc.php" method="post">
             <select name="select_product">
                 <label>Select a product</label>
