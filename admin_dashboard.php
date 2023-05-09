@@ -63,7 +63,7 @@ $records_product = mysqli_query($conn, $sql_product);
                                 <td><input type=text name=consumer_password value='" . $row["consumer_password"] . "'></td>
                                 <td><input type=hidden name=user_level value='" . $row["user_level"] . "'></td>
                                 <td><input type=hidden name=consumer_id value='" . $row["consumer_id"] . "'></td>
-                                <td><input type='submit' name='update-consumer' value='Update'></td>
+                                <td><button type='submit' name='update-consumer' value='Update'>Update</td>
                                 </form></tr>";
                     } ?>
                 </tbody>
@@ -133,7 +133,7 @@ $records_product = mysqli_query($conn, $sql_product);
                                 <td><input type=text name=broker_password value='" . $row["broker_password"] . "'></td>
                                 <td><input type=hidden name=user_level value='" . $row["user_level"] . "'></td>
                                 <td><input type=hidden name=broker_id value='" . $row["broker_id"] . "'></td>
-                                <td><input type='submit' name='update-broker' value='Update'></td>
+                                <td><button type='submit' name='update-broker' value='Update'>Update</td>
                                 </form></tr>";
                     } ?>
                 </tbody>
@@ -172,13 +172,17 @@ $records_product = mysqli_query($conn, $sql_product);
                 <thead>
                     <tr>
                         <th scope="col">Product name</th>
+                        <th scope="col">Cover type</th>
+                        <th scope="col">Vehicle type</th>
                         <th scope="col">Product price</th>
                         <th scope="col">Product description</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php echo "<tr><form action='includes/insert.inc.php' method='post'>
-                                <td><input type=text name=product_name value='" . $row["product_namel"] . "'></td>
+                                <td><input type=text name=product_name value='" . $row["product_name"] . "'></td>
+                                <td><input type=text name=cover_type value='" . $row["cover_type"] . "'></td>
+                                <td><input type=text name=vehicle_type value='" . $row["vehicle_type"] . "'></td>
                                 <td><input type=text name=product_price value='" . $row["product_price"] . "'></td>
                                 <td><input type=text name=product_description value='" . $row["product_description"] . "'></td>
                                 <td><input type=hidden name=product_id value='" . $row["product_id"] . "'></td>

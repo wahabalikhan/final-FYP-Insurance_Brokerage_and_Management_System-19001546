@@ -44,12 +44,14 @@ if (isset($_POST['booking_submit'])) {
 }
 
 // insert product into products table from admin panel
-if (isset($_POST['add-product'])) {
+if (isset($_POST['insert-product'])) {
     $product_name = $_POST['product_name'];
+    $cover_type = $_POST['cover_type'];
+    $vehicle_type = $_POST['vehicle_type'];
     $product_price = $_POST['product_price'];
     $product_description = $_POST['product_description'];
 
-    $sql = "INSERT INTO product (product_name, product_price, product_description) VALUES ('$product_name','$product_price','$product_description')";
+    $sql = "INSERT INTO product (product_name, cover_type, vehicle_type, product_price, product_description) VALUES ('$product_name','$cover_type','$vehicle_type','$product_price','$product_description')";
     if (mysqli_query($conn, $sql)) {
         echo "Successfully inserted product record";
     } else {

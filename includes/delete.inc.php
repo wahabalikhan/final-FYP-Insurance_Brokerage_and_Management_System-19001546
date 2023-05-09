@@ -9,6 +9,14 @@
     }
     header("refresh:1; url='../admin_dashboard.php'");
 
+    $sql_broker = "DELETE FROM broker WHERE broker_id='$_GET[broker_id]'";
+    if (mysqli_query($conn, $sql_broker)) {
+        echo "Successfully deleted broker record";
+    } else {
+        echo "Failed to delete broker record";
+    }
+    header("refresh:1; url='../admin_dashboard.php'");
+
     $sql_booking = "DELETE FROM booking WHERE booking_id='$_GET[booking_id]'";
     if (mysqli_query($conn, $sql_booking)) {
         echo "Successfully deleted booking record";

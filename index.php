@@ -32,14 +32,14 @@ if (isAdmin()) {
             </div>
             <div class='card' style='width: 18rem; display: inline-block;'>
                 <div class='card-body'>
-                    <h5 class='card-title'>Service 1</h5>
+                    <h5 class='card-title'>Service 2</h5>
                     <h6 class='card-subtitle mb-2 text-muted'>Lorem ipsum</h6>
                     <p class='card-text'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum, fugit veritatis? Odit veritatis eos optio quaerat repellat, facere dignissimos neque.</p>
                 </div>
             </div>
             <div class='card' style='width: 18rem; display: inline-block;'>
                 <div class='card-body'>
-                    <h5 class='card-title'>Service 1</h5>
+                    <h5 class='card-title'>Service 3</h5>
                     <h6 class='card-subtitle mb-2 text-muted'>Lorem ipsum</h6>
                     <p class='card-text'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum, fugit veritatis? Odit veritatis eos optio quaerat repellat, facere dignissimos neque.</p>
                 </div>
