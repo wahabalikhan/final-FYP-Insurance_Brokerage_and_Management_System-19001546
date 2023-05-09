@@ -28,7 +28,8 @@ if (isset($_POST['register-submit'])) {
                 header("Location: ../register.php?error=sqlerror");
                 exit();
             } else {
-                mysqli_stmt_bind_param($stmt, "ss", $consumer_email, $consumer_password);
+                $consumer_hashed_password = password_hash($consumer_password, PASSWORD_DEFAULT);
+                mysqli_stmt_bind_param($stmt, "ss", $consumer_email, $consumer_hashed_password);
                 mysqli_stmt_execute($stmt);
 
                 session_start();

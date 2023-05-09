@@ -38,3 +38,18 @@ function isAdmin() {
         return false;
     }
 }
+
+function emptyLogin($consumer_email, $consumer_password)
+{
+    # returns true or false statement
+    $result = "";
+    # empty()—check if there is data or no data that will be in function
+    if (empty($consumer_email) || empty($consumer_password)) {
+        # if empty fields, then return true
+        $result = true;
+    } else {
+        # no empty fields, then return false
+        $result = false;
+    }
+    return $result;
+}
